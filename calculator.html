@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- linking custom css -->
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Carbon Project</title>
+  </head>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-wrapper pt-4 mb-2">
+        <div class="nav-brand mt-2">
+          <p class="nav-text m-0">Home</p>
+        </div>
+
+        <div class="menu-btn mt-2">
+          <div class="btn-icon">
+            <span class="iconify" data-icon="icon-park:menu-fold"></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hidden-menu">
+      <p class="link"><a href="/index.html"> home </a></p>
+      <p class="link"><a href="/activity.html"> activity </a></p>
+      <p class="link">
+        <a href="/calculator.html" class="active"> calculator </a>
+      </p>
+      <p class="link active"><a href="/about.html"> about us </a></p>
+    </div>
+
+    <div class="section-hero py-3 pt-5">
+      <p class="disDis text-center">Calculate Your Carbon Footprint</p>
+
+      <form action="">
+        <div class="container">
+          <div class="first">
+            <p class="ques">Choose if you are Vegetarian or Non-Vegetarian:</p>
+
+            <fieldset id=group1>
+              <div class="form-check">
+                <span> a)</span>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="group1"
+                  id="flexRadioDefault1"
+                  
+                />
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Vegetarian
+                </label>
+              </div>
+              <div class="form-check">
+                <span> b)</span>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="group1"
+                  id="flexRadioDefault2"
+                  
+                />
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Non-Vegetarian
+                </label>
+              </div>
+            </fieldset>
+
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="second my-4">
+            <p class="ques">Mode Of Travel</p>
+            <fieldset id="group2">
+
+            <div class="form-check">
+              <span> a)</span>
+              <input class="form-check-input" type="radio" name="group2" id="flexRadioDefault3" onchange="CheckValue(this.value)" value="Private"/>
+              <label class="form-check-label" for="flexRadioDefault3">
+                Private
+              </label>
+
+              <label for="kms" id="kmsh" style="display: none">
+                Number of kms you travel weekly</label
+              >
+              <input type="text" name="privKMS" id="kms" style="display: none" />
+
+              <label for="m" id="mh" style="display: none">
+                Mileage of your vehicle</label
+              >
+              <input type="text" name="privMil" id="m" style="display: none" />
+            </div>
+            <div class="form-check">
+              <span> b)</span>
+              <input class="form-check-input" type="radio" name="group2" id="flexRadioDefault4" onchange="CheckValue1(this.value)" value="Public" />
+              <label class="form-check-label" for="flexRadioDefault4">
+                Public Transport
+              </label>
+
+              <label for="kmsP" id="kmshP" style="display: none">
+                Number of kms you travel weekly</label
+              >
+              <input type="text" name="pubKMS" id="kmsP" style="display: none" />
+
+            </div>
+          </fieldset>
+
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="third my-4">
+            <p class="ques">Enter number of people in your house</p>
+            <input type="number" id="people" name="numPeople"/>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="fourth my-4">
+            <p class="ques">
+              Enter amount in rupees spent on electricity per month
+            </p>
+            <input type="number" id="elec" name="elec" />
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="fifth my-4">
+            <p class="ques">Enter number of L.P.G cylinders used per year</p>
+            <input type="number" id="lpg" name="lpg" />
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="fifth my-4">
+            <p class="ques">
+              Enter the number of kms you travel using flight in a year
+            </p>
+            <input type="number" id="flight" name="flights" />
+          </div>
+        </div>
+
+        <div class="container">
+        <div class="btn  w-100 btn-success"  onclick="calc()">Calculate</button>
+      </div>
+      </form>
+    </div>
+
+    <div class="trees-wrapper" id="tw">
+      <p class="tree-text">Number of trees to plant:</p>
+      <p class="numberTrees" id="trees"></p>
+
+      <p id="close">Close</p>
+    </div>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+    <!-- cusotm icon cdn -->
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      function CheckValue(val) {
+        var element = document.getElementById("kms");
+        var element1 = document.getElementById("kmsh");
+        var element2 = document.getElementById("m");
+        var element3 = document.getElementById("mh");
+        var element4 = document.getElementById("kmsP");
+        var element5 = document.getElementById("kmshP");
+        var treesDiv = document.getElementById("trees");
+        var tw = document.getElementById("tw");
+
+        if (val == "" || val == "Private") {
+          element.style.display = "block";
+          element1.style.display = "block";
+          element2.style.display = "block";
+          element3.style.display = "block";
+          element4.style.display = "none";
+          element5.style.display = "none";
+          element4.value = ''
+
+
+        } 
+      }
+
+      function CheckValue1(val) {
+        var element = document.getElementById("kms");
+        var element1 = document.getElementById("kmsh");
+        var element2 = document.getElementById("m");
+        var element3 = document.getElementById("mh");
+        var element4 = document.getElementById("kmsP");
+        var element5 = document.getElementById("kmshP");
+
+        if (val == "" || val == "Public") {
+          element.style.display = "none";
+          element1.style.display = "none";
+          element2.style.display = "none";
+          element3.style.display = "none";
+          element4.style.display = "block";
+          element5.style.display = "block";
+          element.value = '';
+          element2.value = '';
+
+        }
+      }
+
+
+      function calc(){
+
+        let d = document.getElementById('kms').value
+        let m = document.getElementById('m').value
+        let d1 = document.getElementById('kmsP').value
+        let p = document.getElementById('people').value
+        let amt = document.getElementById('elec').value
+        let lpg = document.getElementById('lpg').value
+        let fl = document.getElementById('flight').value
+
+        var treesDiv = document.getElementById("trees");
+        var tw = document.getElementById("tw");
+
+
+        var cp = 3.5
+
+          if($('#flexRadioDefault1').is(':checked')) 
+            { 
+                cp = cp+1.73
+
+            }
+
+          else if ($('#flexRadioDefault2').is(':checked')){
+              cp = cp+2.3
+            }
+
+                        
+            if($('#flexRadioDefault3').is(':checked')) 
+                { 
+                  cp = cp + (d * 52 * 2.5)/(1000*m)
+                }
+
+              else if($('#flexRadioDefault4').is(':checked')){
+                  cp = cp + (d1 * 52 * 0.05)/1000
+
+
+              }
+              
+              cp = cp+(amt* 0.8512)/(7100 * p)
+              cp = cp+(lpg* 2.983)/(7100 * p)
+              cp = cp+(fl * 0.0003)
+              console.log(cp)
+              let trees = cp/64;
+
+              treesDiv.innerText = trees
+              tw.style.display = "flex"
+
+              
+              
+      } 
+
+      let closeBtn = document.getElementById('close')
+      closeBtn.addEventListener('click',()=>{
+        var tw = document.getElementById("tw");
+        var treesDiv = document.getElementById("trees");
+        
+        tw.style.display = "none"
+      })
+
+
+    </script>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
