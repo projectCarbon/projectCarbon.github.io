@@ -130,13 +130,11 @@ svg {
 }
 
 .btn-upload-wrapper{
-  position: absolute;
-  bottom: 5%;
-  margin: auto;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
+  margin: 5% 0;
 }
-
 .trees-wrapper{
   height: 30vh;
   width: 80vw;

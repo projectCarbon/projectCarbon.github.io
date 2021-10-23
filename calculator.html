@@ -169,7 +169,7 @@
     </div>
 
     <div class="trees-wrapper" id="tw">
-      <p class="tree-text">Number of trees to plant:</p>
+      <p class="tree-text">Your carbon footprint is :</p>
       <p class="numberTrees" id="trees"></p>
 
       <p id="close">Close</p>
@@ -263,37 +263,40 @@
         var tw = document.getElementById("tw");
 
 
-        var cp = 3.5
+        var cf = 3.5
 
           if($('#flexRadioDefault1').is(':checked')) 
             { 
-                cp = cp+1.73
+                cf = cf+1.73
 
             }
 
           else if ($('#flexRadioDefault2').is(':checked')){
-              cp = cp+2.3
+              cf = cf+2.3
             }
 
                         
             if($('#flexRadioDefault3').is(':checked')) 
                 { 
-                  cp = cp + (d * 52 * 2.5)/(1000*m)
+                  cf = cf + (d * 52 * 2.5)/(1000*m)
                 }
 
               else if($('#flexRadioDefault4').is(':checked')){
-                  cp = cp + (d1 * 52 * 0.05)/1000
+                  cf = cf + (d1 * 52 * 0.05)/1000
 
 
               }
               
-              cp = cp+(amt* 0.8512)/(7100 * p)
-              cp = cp+(lpg* 2.983)/(7100 * p)
-              cp = cp+(fl * 0.0003)
-              console.log(cp)
-              let trees = cp/64;
+              cf = cf+(amt* 0.8512)/(7100 * p)
+              cf = cf+(lpg* 2.983)/(7100 * p)
+              cf = cf+(fl * 0.0003)
+              console.log(cf)
+              let trees = cf/64;
 
-              treesDiv.innerText = trees
+              cf = cf.toString()
+
+              cf = cf.slice(0,5)
+              treesDiv.innerText = cf
               tw.style.display = "flex"
 
               

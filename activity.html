@@ -30,7 +30,7 @@
     <nav class="nav">
       <div class="nav-wrapper pt-4 mb-2">
         <div class="nav-brand mt-2">
-          <p class="nav-text m-0">Home</p>
+          <p class="nav-text m-0">Activity </p>
         </div>
 
         <div class="menu-btn mt-2">
@@ -49,15 +49,20 @@
     </div>
 
     <div class="section-hero py-3 pt-5 d-flex flex-column align-items-center">
-      <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSezs6Rnt9DjMsGrivMeKlQqGFQtdbpSbd57iyAkZAERqaiSnA/formResponse" name="google-sheet">
+    
+    <div class="discription">
+      <p class="disDis px-2">
+        Doing an activity on what we learn makes us more open to the ideas that we learnt. We have an exciting activity for you. By now you must have understood the concept of pollution, carbon footprint and how to reduce it. You can make any sort of art, craft, painting or click a pic that explains your understanding of what carbon footprint is. This way you will be able to explore more things about this topic and have fun both at the same time.
+To submit your work upload an image of whatever you have done and press on the submit button.
+
+      </p>
+    </div>
+
+    <br><br>
+      <form action="">
         <div class="image-wrapper">
           <label for="photo"> + add photo</label>
-          <input type="hidden" id="photo" name="entry.1409235281" class="d-none" />
-        </div>
-
-        <div class="other-wrapper d-flex flex-column">
-          <input type="text" class="input-fields input-fields-1" name="entry.1478602867" placeholder="Title...">
-          <textarea type="text" class="input-fields"  name="entry.1978993293" placeholder="Message"></textarea>
+          <input type="file" id="photo" class="d-none" />
         </div>
 
         <div class="btn-upload-wrapper d-flex justify-content-center">
@@ -92,18 +97,5 @@
     ></script>
 
     <script src="/app.js"></script>
-
-<!--     
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwXil0ZcAGXnkajGmUGALDV8ATipTqs8e7BkXVhIRZtCyGqhfrgDkknqYrvJVl3CWfjUw/exec'
-  const form = document.forms['google-sheet']
-
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-  }) -->
-</script>
   </body>
 </html>
