@@ -16,6 +16,7 @@ let valueContainer2 = document.querySelector(".value-container2");
 setInterval(updater, 5000);
 
 function updater(){
+  // enter your api link here replace local host with the ip address of your server
 let url = "http://localhost/bms/api.php"
 fetch(url)
 .then(res => res.json())
